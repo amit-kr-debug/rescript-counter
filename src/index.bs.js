@@ -5,12 +5,12 @@ var plusButton = document.getElementById("plus-one");
 
 var minusButton = document.getElementById("minus-one");
 
-var el = document.getElementById("count");
+var countElement = document.getElementById("count");
 
 window.count = 0;
 
 function renderCountTextView(count) {
-  el.innerText = count === 0 ? "Count is zero" : "Count is " + String(count);
+  countElement.innerText = count === 0 ? "Count is zero" : "Count is " + String(count);
   
 }
 
@@ -20,7 +20,7 @@ function updateCount(steps) {
 }
 
 function updateCountClass(count) {
-  el.className = "count" + (
+  countElement.className = "count" + (
     count > 0 ? " count-positive" : (
         count < 0 ? " count-negative" : " count-zero"
       )
@@ -49,7 +49,7 @@ minusButton.addEventListener("click", minusOne);
 export {
   plusButton ,
   minusButton ,
-  el ,
+  countElement ,
   renderCountTextView ,
   updateCount ,
   updateCountClass ,

@@ -2,11 +2,11 @@
 @val external window: {..} = "window"
 let plusButton = document["getElementById"]("plus-one")
 let minusButton = document["getElementById"]("minus-one")
-let el = document["getElementById"]("count")
+let countElement = document["getElementById"]("count")
 window["count"] = 0
 
 let renderCountTextView = count => {
-  el["innerText"] = {
+  countElement["innerText"] = {
     if count === 0 {
       `Count is zero`
     } else {
@@ -20,7 +20,7 @@ let updateCount = steps => {
 }
 
 let updateCountClass = count => {
-  el["className"] =
+  countElement["className"] =
     "count" ++ {
       if count > 0 {
         " count-positive"
