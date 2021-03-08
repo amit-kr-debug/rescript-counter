@@ -1,3 +1,5 @@
+[Rescript Counter App Link](https://rescript-counter-9c2vx9m09-amit-kr-debug.vercel.app/)
+
 ## Getting Started
 
 ```
