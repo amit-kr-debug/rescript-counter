@@ -7,22 +7,26 @@ var minusButton = document.getElementById("minus-one");
 
 var countElement = document.getElementById("count");
 
-window.count = 0;
+var count = {
+  contents: 0
+};
 
-function renderCountTextView(count) {
-  countElement.innerText = count === 0 ? "Count is zero" : "Count is " + String(count);
+function renderCountTextView(param) {
+  var n = count.contents;
+  countElement.innerText = n === 0 ? "Count is zero" : "Count is " + String(n);
   
 }
 
 function updateCount(steps) {
-  window.count = steps + window.count | 0;
+  count.contents = count.contents + steps | 0;
   
 }
 
-function updateCountClass(count) {
+function updateCountClass(param) {
+  var n = count.contents;
   countElement.className = "count" + (
-    count > 0 ? " count-positive" : (
-        count < 0 ? " count-negative" : " count-zero"
+    n > 0 ? " count-positive" : (
+        n < 0 ? " count-negative" : " count-zero"
       )
   );
   
@@ -30,8 +34,8 @@ function updateCountClass(count) {
 
 function renderView(steps) {
   updateCount(steps);
-  renderCountTextView(window.count);
-  return updateCountClass(window.count);
+  renderCountTextView(undefined);
+  return updateCountClass(undefined);
 }
 
 function minusOne(param) {
@@ -50,6 +54,7 @@ export {
   plusButton ,
   minusButton ,
   countElement ,
+  count ,
   renderCountTextView ,
   updateCount ,
   updateCountClass ,

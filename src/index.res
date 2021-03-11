@@ -3,28 +3,30 @@
 let plusButton = document["getElementById"]("plus-one")
 let minusButton = document["getElementById"]("minus-one")
 let countElement = document["getElementById"]("count")
-window["count"] = 0
+let count = ref(0)
 
-let renderCountTextView = count => {
+let renderCountTextView = (): unit => {
+  let n = count.contents
   countElement["innerText"] = {
-    if count === 0 {
+    if n === 0 {
       `Count is zero`
     } else {
-      `Count is ${Belt.Int.toString(count)}`
+      `Count is ${Belt.Int.toString(n)}`
     }
   }
 }
 
 let updateCount = steps => {
-  window["count"] = steps + window["count"]
+  count := count.contents + steps
 }
 
-let updateCountClass = count => {
+let updateCountClass = () => {
+  let n = count.contents
   countElement["className"] =
     "count" ++ {
-      if count > 0 {
+      if n > 0 {
         " count-positive"
-      } else if count < 0 {
+      } else if n < 0 {
         " count-negative"
       } else {
         " count-zero"
@@ -34,8 +36,8 @@ let updateCountClass = count => {
 
 let renderView = steps => {
   updateCount(steps)
-  renderCountTextView(window["count"])
-  updateCountClass(window["count"])
+  renderCountTextView()
+  updateCountClass()
 }
 
 let minusOne = () => {
